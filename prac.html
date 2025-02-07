@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Match</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 1em;
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        #auth, #search, #results {
+            margin-bottom: 2em;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        #mealCards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+        }
+
+        .meal-card {
+            border: 1px solid #ddd;
+            padding: 1em;
+        }
+
+        .meal-card img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meal Match</h1>
+        <nav>
+            <a href="#login">Login</a>
+            <a href="#signup">Sign Up</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="auth">
+            <div id="login">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div id="signup">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </section>
+        
+        <section id="search">
+            <h2>Find Recipes by Ingredients</h2>
+            <input type="text" id="ingredientsInput" placeholder="Enter ingredients, e.g. 'chicken, tomato'" required>
+            <button id="searchButton">Search</button>
+        </section>
+        
+        <section id="results">
+            <h2>Meal Suggestions</h2>
+            <div id="mealCards"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Meal Match. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const searchButton = document.getElementById('searchButton');
+            const mealCards = document.getElementById('mealCards');
+
+            // User Authentication
+            loginForm.addEventListener('submit', event => {
+                event.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                // Implement login logic here
+                console.log('Login:', { email, password });
+            });
+
+            signupForm.addEventListener('submit', event => {
+                event.preventDefault();
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                // Implement sign-up logic here
+                console.log('Sign Up:', { email, password });
+            });
+
+            // Ingredient-Based Recipe Search
+            searchButton.addEventListener('click', async () => {
+                const ingredients = document.getElementById('ingredientsInput').value;
+                if (ingredients.trim() !== '') {
+                    const meals = await fetchMeals(ingredients);
+                    displayMeals(meals);
+                }
+            });
+
+            async function fetchMeals(ingredients) {
+                const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
+                const data = await response.json();
+                return data.meals;
+            }
+
+            function displayMeals(meals) {
+                mealCards.innerHTML = '';
+                if (meals) {
+                    meals.forEach(meal => {
+                        const mealCard = document.createElement('div');
+                        mealCard.classList.add('meal-card');
+                        mealCard.innerHTML = `
+                            <h3>${meal.strMeal}</h3>
+                            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                            <a href="https://www.youtube.com/watch?v=${meal.strYoutube}" target="_blank">Watch Tutorial</a>
+                        `;
+                        mealCards.appendChild(mealCard);
+                    });
+                } else {
+                    mealCards.innerHTML = '<p>No meals found. Try different ingredients.</p>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
