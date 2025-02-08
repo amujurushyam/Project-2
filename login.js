@@ -30,15 +30,15 @@ submit.addEventListener("click", function (event) {
   event.preventDefault();
 
   // inputs
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const email = document.getElementById("user").value;
+  const password = document.getElementById("pass").value;
 
   signInWithEmailAndPassword (auth, email, password)
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
       alert("Loggedin Sucessfully");
-      window.location.href="login.html"
+      window.location.href="loading.html"
       // ...
     })
     .catch((error) => {

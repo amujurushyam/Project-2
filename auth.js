@@ -37,7 +37,7 @@ submit.addEventListener("click", function (event) {
     .then((userCredential) => {
       // Signed up
       const user = userCredential.user;
-      alert("Siggned Sucessfully");
+      alert("Siggned In Sucessfully");
       window.location.href="login.html"
       // ...
     })
