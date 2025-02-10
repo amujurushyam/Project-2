@@ -30,8 +30,8 @@ submit.addEventListener("click", function (event) {
   event.preventDefault();
 
   // inputs
-  const email = document.getElementById("user").value;
-  const password = document.getElementById("pass").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   signInWithEmailAndPassword (auth, email, password)
     .then((userCredential) => {

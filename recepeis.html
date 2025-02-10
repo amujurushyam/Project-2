@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Cards</title>
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Cards</h1>
+    <div class="card-container" id="card-container"></div>
+    
+    <script>
+        const url = "https://679af5fb747b09cdccd00c8e.mockapi.io/food";
+
+        async function fetchFood() {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error("Failed to retrieve data");
+                }
+                const data = await response.json();
+                const foodItems = data;
+                const cardContainer = document.getElementById('card-container');
+
+                foodItems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    const img = document.createElement('img');
+                    img.src = item.image;
+                    img.alt = item.name;
+
+                    const title = document.createElement('div');
+                    title.className = 'card-title';
+                    title.textContent = item.name;
+
+                    card.appendChild(img);
+                    card.appendChild(title);
+
+                    cardContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        fetchFood();
+    </script>
+</body>
+</html>

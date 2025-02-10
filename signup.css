@@ -92,9 +92,85 @@
 }
 
 @media screen and (min-width: 0px) and (max-width: 800px) {
-  .carousel-inner{
+  .carousel-inner {
     width: 100%;
     height: auto;
   }
 }
 
+.dynamic-tab {
+  position: relative;
+  top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home-tab-pane {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  height: 300px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+}
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.card-title {
+  margin: 10px 0;
+}
+#profile-tab-pane {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  top: -290px;
+  /* width: 250px; */
+}
+
+#contact-tab-pane {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  top: -580px;
+  /* width: 250px; */
+}
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+  #contact-tab-pane{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: -3080px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+  #profile-tab-pane{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: -1540px;
+  }
+}

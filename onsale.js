@@ -1,4 +1,4 @@
-const url1 = "https://67aa1bf965ab088ea7e5ad7a.mockapi.io/one";
+const url1 = "https://679af5fb747b09cdccd00c8e.mockapi.io/food";
 
 async function fetchFood() {
   try {
@@ -8,7 +8,7 @@ async function fetchFood() {
     }
     const data = await response.json();
     const foodItems = data;
-    const cardContainer = document.getElementById("home-tab-pane");
+    const cardContainer = document.getElementById("profile-tab-pane");
 
     foodItems.forEach((item) => {
       const card = document.createElement("div");
@@ -33,7 +33,3 @@ async function fetchFood() {
 }
 
 fetchFood();
-
-
-
-
