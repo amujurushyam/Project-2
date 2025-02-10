@@ -38,7 +38,7 @@ submit.addEventListener("click", function (event) {
       // Signed up
       const user = userCredential.user;
       alert("Siggned In Sucessfully");
-      window.location.href="login.html"
+      window.location.href = "login.html";
       // ...
     })
     .catch((error) => {
@@ -48,3 +48,13 @@ submit.addEventListener("click", function (event) {
       // ..
     });
 });
+
+document.getElementById("guest").onclick = function () {
+  alert("Guest Logged In Sucessfully");
+  window.location.href = "signup.html";
+};
+
+document.getElementById("guest-logout").onclick = function () {
+  alert("Guest Logged Out Sucessfully");
+  window.location.href = "index.html";
+};
