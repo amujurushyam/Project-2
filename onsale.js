@@ -9,8 +9,13 @@ async function fetchFood() {
     const data = await response.json();
     const foodItems = data;
     const cardContainer = document.getElementById("profile-tab-pane");
+    const cardContainer_home_tab = document.getElementById("home-tab-pane"); 
+   
+    
 
     foodItems.forEach((item) => {
+      
+       
       const card = document.createElement("div");
       card.className = "card";
 

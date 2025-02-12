@@ -8,9 +8,6 @@
   /* background-size: cover; */
 }
 
-/* .navbar-brand{
-  margin-left: -80px;
-} */
 .search {
   margin: 2px;
   padding: 15px;
@@ -180,5 +177,28 @@
     flex-wrap: wrap;
     position: relative;
     top: -1540px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 720px) {
+  #accordionFlushExample {
+    margin-top: 1250px;
+  }
+}
+
+@media screen and (min-width: 721px) and (max-width: 1024px) {
+  #accordionFlushExample {
+    margin-top: 590px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  #accordionFlushExample {
+    margin-top: 1050px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 720px) {
+   .img1{
+    
   }
 }
