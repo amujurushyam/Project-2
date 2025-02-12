@@ -22,8 +22,18 @@ async function fetchFood() {
       title.className = "card-title";
       title.textContent = item.name;
 
+      const button = document.createElement("button");
+      button.className = "add-to-cart1";
+      button.textContent = "Add to Cart";
+
+      // Add event listener for navigation
+      button.addEventListener("click", () => {
+        window.location.href = "signup.html";
+      });
+
       card.appendChild(img);
       card.appendChild(title);
+      card.appendChild(button);
 
       cardContainer.appendChild(card);
     });
