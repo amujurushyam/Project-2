@@ -24,11 +24,12 @@
     <script src="./recipies.js" defer type="module"></script>
     <script src="./onsale.js" defer type="module"></script>
     <script src="./top-rated.js" defer type="module"></script>
+    <script src="./seafood.js" defer type="module"></script>
   </head>
   <body>
     <div class="bg">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
+      <nav class="navbar navbar-expand-lg" style="justify-content: space-between;gap: 125px;">
+        <div class="container" >
           <a class="navbar-brand" href="#"><h2>Meal Match</h2></a>
           <button
             class="navbar-toggler"
@@ -105,26 +106,8 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Contact Us
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="./contact.html"
-                      target="_blank"
-                      >Join Your Kitchen / Club</a
-                    >
-                  </li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="./contact.html" target="_blank">Contact Us </a>
               </li>
             </ul>
           </div>
@@ -246,7 +229,7 @@
           <p>WHAT'S FOR &nbsp;</p>
           <strong>DINNER &nbsp;</strong>
           <p>TONIGHT</p>
-          <a href=""
+          <a href="./dinner.html" target="_blank"
             >Order Now
             <svg
               width="30px"
@@ -272,8 +255,7 @@
                   fill="#ffffff"
                   d="M33.7 16L49 32L33.7 48V37.4H15V27.1h18.7z"
                 ></path>
-              </g></svg
-          ></a>
+              </g></svg></a>
         </div>
       </div>
       <div class="da">
@@ -311,8 +293,7 @@
                   fill="#ffffff"
                   d="M33.7 16L49 32L33.7 48V37.4H15V27.1h18.7z"
                 ></path>
-              </g></svg
-          ></a>
+              </g></svg></a>
         </div>
       </div>
       <div class="da">
@@ -350,8 +331,7 @@
                   fill="#ffffff"
                   d="M33.7 16L49 32L33.7 48V37.4H15V27.1h18.7z"
                 ></path>
-              </g></svg
-          ></a>
+              </g></svg></a>
         </div>
       </div>
       <div class="da">
@@ -655,5 +635,11 @@
         </div>
       </div>
     </div>
+    <div class="container1">
+      <h2>Seafood Recipes</h2>
+      <div class="recipe-slider">
+          <div class="recipe-list" id="recipe-list"></div>
+      </div>
+  </div>
   </body>
 </html>
