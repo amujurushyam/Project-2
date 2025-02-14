@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Item Details</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 2.5em;
+        text-align: center;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      h2 {
+        margin: 20px 0;
+        font-size: 2em;
+        color: #666;
+        text-align: center;
+      }
+
+      h3 {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #888;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin: 20px auto;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      li {
+        padding: 10px 15px;
+        background: #fff;
+        margin: 5px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1 1 calc(50% - 10px);
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      li img {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+
+      @media (max-width: 600px) {
+        li {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Food Item Details</h1>
+    <div id="foodDetails"></div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const foodId = urlParams.get("id");
+
+      if (foodId) {
+        fetch(`https://67aa1bf965ab088ea7e5ad7a.mockapi.io/one/${foodId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const food = data;
+            const foodDetails = document.getElementById("foodDetails");
+
+            foodDetails.innerHTML = `
+                        <h2>${food.name}</h2>
+                        <img src="${food.image}" alt="${food.name}">
+                        <h3>Ingredients:</h3>
+                        <ul>
+                            ${food.ingredients
+                              .map(
+                                (ingredient) => `
+                                <li>
+                                    <img src="${ingredient.image}" alt="${ingredient.name}">
+                                    ${ingredient.name} - ${ingredient.amount}
+                                </li>
+                            `
+                              )
+                              .join("")}
+                        </ul>
+                    `;
+          })
+          .catch((error) => {
+            console.error("Error fetching food details:", error);
+          });
+      } else {
+        document.getElementById("foodDetails").innerHTML =
+          "<p>No food item selected.</p>";
+      }
+    </script>
+  </body>
+</html>

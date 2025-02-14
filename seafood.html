@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Details</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #abbaab, #ffffff);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        margin-top: 20px;
+        color: #007bff;
+      }
+      #mealDetails {
+        /* background-color: white; */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        width: 90%;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        #mealDetails {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+      }
+      h2 {
+        color: #dc3545;
+      }
+      img {
+        max-width: 50%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      @media (min-width: 768px) {
+        img {
+          max-width: 30%;
+          margin-right: 20px;
+          margin-bottom: 0;
+          align-self: flex-start;
+        }
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      @media (min-width: 768px) {
+        ul {
+          justify-content: flex-start;
+        }
+      }
+      li {
+        padding: 10px 15px;
+        background: #f8f9fa;
+        margin: 5px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1 1 calc(50% - 10px);
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        transition: transform 0.3s;
+      }
+
+      li:hover {
+        transform: scale(1.05);
+      }
+      li img {
+        margin-bottom: 5px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Meal Details</h1>
+    <div id="mealDetails"></div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const mealId = urlParams.get("id");
+
+      if (mealId) {
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const meal = data.meals[0];
+            const mealDetails = document.getElementById("mealDetails");
+
+            mealDetails.innerHTML = `
+                        <h2>${meal.strMeal}</h2>
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                        <h3>Ingredients:</h3>
+                        <ul style="display: flex; flex-wrap: wrap;">
+                            ${Object.keys(meal)
+                              .filter(
+                                (key) =>
+                                  key.startsWith("strIngredient") && meal[key]
+                              )
+                              .map(
+                                (key) => `
+                                <li style="flex: 1 1 auto; margin: 5px;">
+                                    <img src="https://www.themealdb.com/images/ingredients/${
+                                      meal[key]
+                                    }-Small.png" alt="${meal[key]}">
+                                    ${meal[key]} - ${
+                                  meal[
+                                    `strMeasure${key.replace(
+                                      "strIngredient",
+                                      ""
+                                    )}`
+                                  ]
+                                }
+                                </li>
+                            `
+                              )
+                              .join("")}
+                        </ul>
+                    `;
+          })
+          .catch((error) => {
+            console.error("Error fetching meal details:", error);
+          });
+      } else {
+        document.getElementById("mealDetails").innerHTML =
+          "<p>No meal selected.</p>";
+      }
+    </script>
+  </body>
+</html>

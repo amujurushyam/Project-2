@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const addToCart = document.createElement("button");
         addToCart.classList.add("add-to-cart3");
-        addToCart.innerHTML = "Add To Cart";
+        addToCart.innerHTML = "To Know More...";
+        addToCart.addEventListener("click", () => {
+          window.location.href = `seafood.html?id=${meal.idMeal}`;
+      });
 
         recipe.appendChild(recipeImg);
         recipe.appendChild(recipeName);
@@ -34,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recipeList.style.transform = `translateX(-${
           currentIndex * (100 / totalRecipes)
         }%)`;
-      }, 3000);
+      }, 2000);
     })
     .catch((error) => console.error("Error fetching the recipes:", error));
 });
