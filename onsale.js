@@ -27,11 +27,11 @@ async function fetchFood() {
 
       const button = document.createElement("button");
       button.className = "add-to-cart2";
-      button.textContent = "Add to Cart";
+      button.textContent = "On Sale Items";
 
       // Add event listener for navigation
       button.addEventListener("click", () => {
-        window.location.href = "/cart-page";
+        alert(`Thank you for visiting. Item: ${item.name}`);
       });
 
       card.appendChild(img);

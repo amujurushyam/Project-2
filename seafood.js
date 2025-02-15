@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recipeList.style.transform = `translateX(-${
           currentIndex * (100 / totalRecipes)
         }%)`;
-      }, 2000);
+      }, 3000);
     })
     .catch((error) => console.error("Error fetching the recipes:", error));
 });

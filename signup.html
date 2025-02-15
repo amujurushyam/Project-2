@@ -6,9 +6,10 @@
     <title>Meal Match</title>
     <link
       rel="shortcut icon"
-      href="https://cdn.vectorstock.com/i/500p/02/19/restaurant-diner-logo-dish-meal-food-vector-8420219.jpg"
+      href="./logo.png"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="signup.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -26,6 +27,181 @@
     <script src="./top-rated.js" defer type="module"></script>
     <script src="./seafood.js" defer type="module"></script>
     <script src="./search.js" defer type="module"></script>
+    <!-- <script src="./categories.js" defer type="module"></script> -->
+    <style>
+      .carousel-item img {
+        filter: brightness(45%);
+      }
+      .carousel-caption {
+        font-family: system-ui;
+        position: absolute;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 5rem; /* Increased font size */
+        animation: splitCombine 2s ease-in-out;
+        width: 100%; /* Adjusted width */
+        height: auto; /* Adjusted height */
+        text-align: center; /* Center text */
+        padding: 10px; /* Added padding */
+        border-radius: 10px; /* Added border radius */
+      }
+      @keyframes slideIn {
+        from {
+          left: -100%;
+          opacity: 0;
+        }
+        to {
+          left: 50%;
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+      @keyframes splitCombine {
+        0% {
+          opacity: 0;
+          letter-spacing: 1em;
+        }
+        50% {
+          opacity: 1;
+          letter-spacing: 1em;
+        }
+        100% {
+          opacity: 1;
+          letter-spacing: normal;
+        }
+      }
+      @media screen and (max-width: 728px) {
+        .carousel-caption {
+          font-size: 2rem; /* Increased font size */
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          white-space: nowrap;
+          text-align: center;
+          animation: splitCombineFromRight 2s ease-in-out; /* New animation */
+        }
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          transform: translate(100%, -50%); /* Start from right */
+          opacity: 0;
+        }
+        to {
+          transform: translate(-50%, -50%); /* End at center */
+          opacity: 1;
+        }
+      }
+
+      @keyframes splitCombineFromRight {
+        0% {
+          opacity: 0;
+          letter-spacing: 1em;
+          transform: translate(100%, -50%); /* Start from right */
+        }
+        50% {
+          opacity: 1;
+          letter-spacing: 1em;
+          transform: translate(50%, -50%); /* Move to center */
+        }
+        100% {
+          opacity: 1;
+          letter-spacing: normal;
+          transform: translate(-50%, -50%); /* End at center */
+        }
+      }
+      .search {
+        display: flex;
+        justify-content: center; /* Center the search bar */
+      }
+      .search input[type="search"] {
+        width: 60%; /* Decreased width */
+      }
+      .meal-categories {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .meal-categories h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .meal-categories #categories,
+      .meal-categories #ingredients {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .meal-categories .category {
+        width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .meal-categories .category img {
+        width: 100%;
+        height: auto;
+      }
+
+      .meal-categories .category h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+      }
+
+      .meal-categories .category p {
+        font-size: 1rem;
+        margin: 10px 0;
+      }
+
+      .meal-categories .category button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+      }
+
+      .meal-categories .category button:hover {
+        background-color: #0056b3;
+      }
+
+      .meal-categories .category:hover {
+        transform: translateY(-5px);
+      }
+
+      header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+      }
+
+      @media screen and (max-width: 728px) {
+        header h1 {
+          font-size: 2rem;
+        }
+
+        .meal-categories .category {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="bg">
@@ -46,7 +222,7 @@
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="./signup.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Order Now</a>
@@ -63,28 +239,16 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="./index.html" target="_blank"
-                      >Sign-Up</a
-                    >
+                    <a class="dropdown-item" href="./index.html" target="_blank">Sign-Up</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./login.html" target="_blank"
-                      >Login</a
-                    >
+                    <a class="dropdown-item" href="./login.html" target="_blank">Login</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./login.html" target="_blank"
-                      >Logout</a
-                    >
+                    <a class="dropdown-item" href="./login.html" target="_blank">Logout</a>
                   </li>
                   <li>
-                    <a
-                      id="guest-logout"
-                      class="dropdown-item"
-                      href="./index.html"
-                      target="_blank"
-                      >Guest Logout</a
-                    >
+                    <a id="guest-logout" class="dropdown-item" href="./index.html" target="_blank">Guest Logout</a>
                   </li>
                 </ul>
               </li>
@@ -102,19 +266,25 @@
                   <li>
                     <a class="dropdown-item" href="#">How Does It Work ?</a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Media</a>
-                  </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./contact.html" target="_blank">Contact Us </a>
+                <a class="nav-link" href="./contact.html" target="_blank">Contact Us</a>
               </li>
             </ul>
+            <form class="d-flex ms-auto" role="search">
+              <input
+                class="form-control me-2"
+                id="searchInput"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </form>
           </div>
         </div>
       </nav>
-      <div class="search" >
+      <!-- <div class="search" >
         <form class="d-flex" role="search">
           <label for="search"
             ><img
@@ -129,12 +299,12 @@
             placeholder="Search"
             aria-label="Search"
             width="100%"
-          />
+          /> -->
           <!-- <img style="height: 35px;position: relative;left: -6px;" src="./shop.png" alt="add-to-cart">
           <span class="quantity">0</span> -->
-        </form>
+        <!-- </form>-->
         <div id="searchResults"></div>
-      </div>
+      </div> 
     </div>
     <div class="slide">
       <div
@@ -145,15 +315,19 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="./img1.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption">Meal Match</div>
           </div>
           <div class="carousel-item">
             <img src="./img2.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption">Meal Match</div>
           </div>
           <div class="carousel-item">
             <img src="./img3.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption">Meal Match</div>
           </div>
           <div class="carousel-item">
             <img src="./img4.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption">Meal Match</div>
           </div>
         </div>
         <button
@@ -164,15 +338,6 @@
         >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
         </button>
         <button
           class="carousel-control-next"
@@ -272,7 +437,7 @@
         <div class="d1">
           <p>ARE YOU A LOCAL &nbsp;</p>
           <strong>KITCHEN &nbsp;</strong> <br />
-          <a href=""
+          <a href="./contact.html" target="_blank"
             >Join Here
             <svg
               width="30px"
@@ -310,34 +475,33 @@
         <div style="position: relative; top: 12px" class="d1">
           <p>CHECK OUR LATEST &nbsp;</p>
           <strong>DEALS &nbsp;</strong> <br /><br />
-          <a href=""
+          <a href="./deals.html" target="_blank"
             >Order Now
             <svg
-              width="30px"
-              height="30px"
-              viewBox="-19.2 -19.2 102.40 102.40"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              class="iconify iconify--emojione"
-              preserveAspectRatio="xMidYMid meet"
-              fill="#000000"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <circle cx="32" cy="32" r="30" fill="#664fd8"></circle>
-                <path
-                  fill="#ffffff"
-                  d="M33.7 16L49 32L33.7 48V37.4H15V27.1h18.7z"
-                ></path>
-              </g>
-            </svg>
+            width="30px"
+            height="30px"
+            viewBox="-19.2 -19.2 102.40 102.40"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--emojione"
+            preserveAspectRatio="xMidYMid meet"
+            fill="#000000"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <circle cx="32" cy="32" r="30" fill="#664fd8"></circle>
+              <path
+                fill="#ffffff"
+                d="M33.7 16L49 32L33.7 48V37.4H15V27.1h18.7z"
+              ></path>
+            </g></svg>
           </a>
         </div>
       </div>
@@ -602,11 +766,64 @@
         </div>
       </div>
     </div>
-    <div class="container1">
+    <!-- <div class="container1">
       <h2>Seafood Recipes</h2>
       <div class="recipe-slider">
           <div class="recipe-list" id="recipe-list"></div>
-      </div>
+      </div> -->
+      <!-- <div class="meal-categories">
+        <h1 id="main-title">Meal Categories</h1>
+        <div id="categories"></div>
+        <div id="ingredients" style="display:none;"></div>
+      </div> -->
+
+      <header>
+        <h1>Meal Categories</h1>
+      </header>
+      <div id="categories"></div>
+    
+      
   </div>
+  <!-- <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">© 2025 Meal Match. All rights reserved.</span>
+      
+      
+    </div>
+  </footer> -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2025 Your Company. All rights reserved.</p>
+  </footer>
+
+  <script>
+   
+        document.addEventListener("DOMContentLoaded", () => {
+          const categoriesDiv = document.getElementById("categories");
+    
+          fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+            .then(response => response.json())
+            .then(data => {
+              data.categories.forEach(category => {
+                const categoryDiv = document.createElement("div");
+                categoryDiv.className = "category";
+                categoryDiv.innerHTML = `
+                  <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
+                  <h3>${category.strCategory}</h3>
+                `;
+                categoryDiv.addEventListener("click", () => {
+                  window.location.href = `show.html?category=${category.strCategory}`;
+                });
+                categoriesDiv.appendChild(categoryDiv);
+              });
+            });
+        });
+      </script>
+  
   </body>
 </html>

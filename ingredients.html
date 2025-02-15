@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingredients</title>
+    <style>
+      body {
+        background: linear-gradient(to right, #abbaab, #ffffff);
+        font-family: system-ui;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      header {
+        /* background-color: #333; */
+        color: black;
+        padding: 15px;
+        text-align: center;
+      }
+      #ingredients {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .ingredient {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .ingredient:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .ingredient img {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+      }
+      .ingredient p {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="main-title">Ingredients</h1>
+    </header>
+    <div id="ingredients"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const ingredientsDiv = document.getElementById("ingredients");
+        const mainTitle = document.getElementById("main-title");
+        const urlParams = new URLSearchParams(window.location.search);
+        const mealId = urlParams.get("mealId");
+
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const meal = data.meals[0];
+            mainTitle.innerText = meal.strMeal;
+            const ingredients = [];
+            for (let i = 1; i <= 20; i++) {
+              if (meal[`strIngredient${i}`]) {
+                ingredients.push({
+                  ingredient: meal[`strIngredient${i}`],
+                  measure: meal[`strMeasure${i}`],
+                  image: `https://www.themealdb.com/images/ingredients/${
+                    meal[`strIngredient${i}`]
+                  }.png`,
+                });
+              }
+            }
+            ingredientsDiv.innerHTML = ingredients
+              .map(
+                (ing) => `
+            <div class="ingredient">
+              <img src="${ing.image}" alt="${ing.ingredient}">
+              <p>${ing.ingredient} - ${ing.measure}</p>
+            </div>
+          `
+              )
+              .join("");
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -36,6 +36,7 @@ input {
 
 #searchResults a:hover {
   background-color: #e0e0e0;
+  color: blue;
 }
 .navbar-brand {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -228,7 +229,7 @@ input {
   background: linear-gradient(to right, #ff8c00, #ffd700, #8b4513);
   color: white;
   border: none;
-  /* cursor: pointer; */
+  cursor: pointer;
   border-radius: 5px;
   margin-top: 10px;
   transition: background 0.3s ease-in-out;
@@ -298,13 +299,13 @@ input {
   transition: transform 1s;
 }
 
-.slider img :hover {
+.slide1 img:hover {
   transform: translateZ(20px);
 }
 
-/* .slide-track:hover {
+.slide-track:hover {
   animation-play-state: paused;
-} */
+}
 
 @keyframes scroll {
   0% {
@@ -324,26 +325,67 @@ input {
   }
 }
 
-.container1 {
+/* .container1 {
   width: 100%;
   margin: 0 auto;
   padding: 5px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+/* } */
 h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-.recipe-slider {
+/* .recipe-slider {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .recipe-list {
   display: flex;
   transition: transform 0.5s ease-in-out;
   will-change: transform;
-}
-.recipe {
+  gap: 20px;
+  padding: 10px;
+  animation: slide 20s infinite; /* Adjusted animation speed */
+/* } */
+/* 
+.recipe-list:hover {
+  animation-play-state: paused;
+} */
+/* 
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  75% {
+    transform: translateX(-75%);
+  }
+  100% {
+    transform: translateX(-100%);
+  } */
+/* }  */
+
+/* .recipe {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -352,15 +394,23 @@ h2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
-  /* min-width: 200px; */
   height: 380px;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.recipe:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .recipe img {
   height: 250px;
-  width: 250px;
+  width: 100%;
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
-}
+  object-fit: cover;
+} */
 .name {
   font-weight: bold;
   margin-bottom: 5px;
@@ -377,4 +427,65 @@ h2 {
 }
 .add-to-cart3:hover {
   background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+footer {
+  background-image: url(./1.jpg);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+footer .social-icons {
+  margin: 10px 0;
+}
+footer .social-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+footer .social-icons a:hover {
+  transform: scale(1.2);
+}
+#categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+.category {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.category img {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.category h3 {
+  padding: 10px;
+  font-size: 0.9em; /* Decreased font size */
+}
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

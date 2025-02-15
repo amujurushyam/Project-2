@@ -19,83 +19,83 @@ let products = [
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
     idMeal: "52928",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Breakfast Potatoes",
     strMealThumb: "https://www.themealdb.com/images/media/meals/1550441882.jpg",
     idMeal: "52965",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Canadian Butter Tarts",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg",
     idMeal: "52923",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Montreal Smoked Meat",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/uttupv1511815050.jpg",
     idMeal: "52927",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Nanaimo Bars",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/vwuprt1511813703.jpg",
     idMeal: "52924",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Pate Chinois",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/yyrrxr1511816289.jpg",
     idMeal: "52930",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Pouding chomeur",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/yqqqwu1511816912.jpg",
     idMeal: "52932",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Poutine",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/uuyrrx1487327597.jpg",
     idMeal: "52804",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Rappie Pie",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/ruwpww1511817242.jpg",
     idMeal: "52933",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Split Pea Soup",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg",
     idMeal: "52925",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Sugar Pie",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/yrstur1511816601.jpg",
     idMeal: "52931",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
   {
     strMeal: "Timbits",
     strMealThumb:
       "https://www.themealdb.com/images/media/meals/txsupu1511815755.jpg",
     idMeal: "52929",
-    price: 500,
+    price: Math.floor(Math.random() * 1000) + 100,
   },
 ];
 let listCards = [];
@@ -126,7 +126,7 @@ function reloadCard() {
   let count = 0;
   let totalPrice = 0;
   listCards.forEach((value, key) => {
-    totalPrice = totalPrice + value.price;
+    totalPrice = totalPrice + value.price * value.quantity;
     count = count + value.quantity;
     if (value != null) {
       let newDiv = document.createElement("li");

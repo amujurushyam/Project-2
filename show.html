@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+    <style>
+      /* Styles from dinner.css */
+      body {
+        background: linear-gradient(to right, #abbaab, #ffffff);
+        font-family: system-ui;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        line-height: 1.6;
+      }
+      header {
+        /* background-color: #333; */
+        color: black;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #recipes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px auto;
+        max-width: 1200px;
+      }
+      .recipe {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .recipe:hover {
+        transform: scale(1.05);
+      }
+      .recipe img {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      .recipe h3 {
+        padding: 10px;
+        font-size: 0.9em; /* Smaller text size */
+        color: #333;
+      }
+      .recipe button {
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 80%;
+        margin: 10px auto; /* Center align the button */
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      .recipe button:hover {
+        background-color: #555;
+      }
+      @media (max-width: 768px) {
+        .recipe {
+          width: 60%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="main-title">Recipes</h1>
+    </header>
+    <div id="recipes"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const recipesDiv = document.getElementById("recipes");
+        const mainTitle = document.getElementById("main-title");
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get("category");
+
+        mainTitle.innerText = `${category} Recipes`;
+
+        fetch(
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            data.meals.forEach((meal) => {
+              const mealDiv = document.createElement("div");
+              mealDiv.className = "recipe";
+              mealDiv.innerHTML = `
+              <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+              <h3>${meal.strMeal}</h3>
+              <button onclick="showIngredients('${meal.idMeal}')">Show Ingredients</button>
+            `;
+              mealDiv.addEventListener("click", () => {
+                window.location.href = `ingredients.html?mealId=${meal.idMeal}`;
+              });
+              recipesDiv.appendChild(mealDiv);
+            });
+          });
+      });
+    </script>
+  </body>
+</html>

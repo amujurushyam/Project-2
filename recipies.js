@@ -22,17 +22,16 @@ async function fetchFood() {
       title.className = "card-title";
       title.textContent = item.name;
 
-      const button = document.createElement("button");
+      const button = document.createElement("button"); // Corrected from "button1" to "button"
       button.className = "add-to-cart";
-      button.textContent = "More Details...";
-       button.addEventListener("click", () => {
-        window.location.href = `recipes.html?id=${item.id}`;
+      button.textContent = "Feautered Items";
+      button.addEventListener("click", () => {
+        alert(`Thank you for visiting. Feautered Items`);
       });
 
       card.appendChild(img);
       card.appendChild(title);
       card.appendChild(button);
-     
 
       cardContainer.appendChild(card);
     });

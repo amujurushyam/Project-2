@@ -99,6 +99,11 @@ header .shopping span {
   padding: 20px;
   box-shadow: 0px 0px 5px 1px #757676;
   letter-spacing: 1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.list .item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 15px 1px #757676;
 }
 .list .item img {
   width: 70%;
@@ -139,4 +144,30 @@ header .shopping span {
 }
 .listCard .count {
   margin: 0 10px;
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+  }
+  .list {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    width: 100%;
+  }
+  .active .card {
+    left: 0;
+  }
+  .active .container {
+    transform: translateX(0);
+  }
 }
