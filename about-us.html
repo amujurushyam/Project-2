@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Meal Match</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #abbaab;
+        font-family: system-ui;
+        color: black;
+      }
+      @keyframes backgroundFade {
+        0% {
+          background: linear-gradient(to right, #abbaab, #ffffff);
+        }
+        100% {
+          background: linear-gradient(to right, #ffffff, #abbaab);
+        }
+      }
+      .navbar {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-image: url(./1.jpg);
+        animation: navbarSlide 2s ease-in-out;
+      }
+      @keyframes navbarSlide {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      .navbar-nav .nav-link {
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover {
+        color: black;
+        animation: linkHover 0.5s ease-in-out;
+      }
+      @keyframes linkHover {
+        from {
+          color: black;
+        }
+        to {
+          color: black;
+        }
+      }
+      .about-section {
+        padding: 50px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+        background-image: url(./1.jpg);
+      }
+      .about-section h2 {
+        margin-bottom: 20px;
+        font-size: 32px;
+        animation: slideInLeft 1s ease-in-out;
+      }
+      .about-section p {
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        animation: slideInRight 1s ease-in-out;
+      }
+      .about-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease-in-out;
+        transition: transform 0.3s ease;
+      }
+      .about-section img:hover {
+        transform: scale(1.05);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><h2>Meal Match</h2></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Account</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="about-section">
+      <div class="container">
+        <h2>About Us</h2>
+        <img src="./logo.png" alt="Our Team" />
+        <p>
+          Welcome to Meal Match, your go-to platform for discovering and sharing
+          delicious recipes. Our mission is to bring together food lovers from
+          around the world and provide a space for them to share their culinary
+          creations. Whether you're a seasoned chef or a home cook, Meal Match
+          is the perfect place to find inspiration and connect with others who
+          share your passion for food.
+        </p>
+        <p>
+          At Meal Match, we believe that cooking is more than just a
+          necessity—it's an art form. That's why we've created a platform where
+          you can explore a wide variety of recipes, from traditional favorites
+          to innovative new dishes. Our community is made up of food enthusiasts
+          who love to experiment in the kitchen and share their discoveries with
+          others.
+        </p>
+        <p>
+          Join us on this culinary journey and be part of a community that
+          celebrates the joy of cooking. Happy cooking!
+        </p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

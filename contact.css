@@ -13,11 +13,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background-image: url(./1.jpg);
 }
 .contact .content {
   max-width: 800px;
   text-align: center;
+  animation: slideInFromLeft 1s ease-out;
 }
 .contact .content h2 {
   font-size: 3em;
@@ -41,6 +42,7 @@
   width: 50%;
   display: flex;
   flex-direction: column;
+  animation: slideInFromLeft 1s ease-out;
 }
 .container .contactInfo .box {
   position: relative;
@@ -58,9 +60,21 @@
   font-size: 1.75em;
   transition: 0.5s;
 }
+@keyframes iconHover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .container .contactInfo .box:hover .icon {
   background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   color: #fff;
+  animation: iconHover 0.5s ease-in-out;
 }
 .container .contactInfo .box .text {
   display: flex;
@@ -72,7 +86,7 @@
 }
 .container .contactInfo .box .text h3 {
   font-weight: 500;
-  color: #7670b7;
+  color: black;
 }
 .container .contactInfo .txt {
   color: #fff;
@@ -97,7 +111,7 @@
   transition: 0.5s;
 }
 .sci li a:hover {
-  color: #594ce9;
+  color: #24243e;
 }
 
 .container .contactForm {
@@ -106,6 +120,7 @@
   background: #fff;
   min-height: 100px;
   padding: 60px;
+  animation: slideInFromRight 1s ease-out;
 }
 .container .contactForm h2 {
   font-size: 2em;
@@ -146,18 +161,54 @@
   font-size: 0.9em;
   transform: translateY(-20px);
 }
+@keyframes buttonHover {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
 .container .contactForm .inputBox input[type="submit"] {
   width: 100px;
   background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background-size: 200% 200%;
   color: #fff;
   border: none;
   cursor: pointer;
   padding: 10px;
   font-size: 1.1em;
   font-weight: 500;
+  transition: background-position 0.5s;
 }
 
-/* lets make it responsive */
+.container .contactForm .inputBox input[type="submit"]:hover {
+  background-position: 100% 0;
+  animation: buttonHover 0.5s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 991px) {
   .contact {
     padding: 50px;

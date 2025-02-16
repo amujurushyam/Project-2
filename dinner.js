@@ -106,7 +106,7 @@ function initApp() {
     newDiv.innerHTML = `
             <img src = "${value.strMealThumb}"/>
       <div class="title">${value.strMeal}</div>
-      <div class="price">${value.price.toLocaleString()}</div>
+      <div class="price">₹${value.price.toLocaleString()}</div>
       <button onclick="addToCard(${key})">Add To Cart</button>
       `;
     list.appendChild(newDiv);
@@ -115,9 +115,9 @@ function initApp() {
 initApp();
 function addToCard(key) {
   if (listCards[key] == null) {
-    // copy product form list to list card
     listCards[key] = JSON.parse(JSON.stringify(products[key]));
     listCards[key].quantity = 1;
+    alert(`"${products[key].strMeal}" has been added to the cart`);
   }
   reloadCard();
 }
@@ -133,7 +133,7 @@ function reloadCard() {
       newDiv.innerHTML = `
                 <div><img src="${value.strMealThumb}"/></div>
                 <div>${value.strMeal}</div>
-                <div>${value.price.toLocaleString()}</div>
+                <div>₹${value.price.toLocaleString()}</div>
                 <div>
                     <button onclick="changeQuantity(${key}, ${
         value.quantity - 1
@@ -146,7 +146,7 @@ function reloadCard() {
       listCard.appendChild(newDiv);
     }
   });
-  total.innerText = totalPrice.toLocaleString();
+  total.innerText = `₹${totalPrice.toLocaleString()}`;
   quantity.innerText = count;
 }
 function changeQuantity(key, quantity) {

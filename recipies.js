@@ -22,7 +22,7 @@ async function fetchFood() {
       title.className = "card-title";
       title.textContent = item.name;
 
-      const button = document.createElement("button"); // Corrected from "button1" to "button"
+      const button = document.createElement("button");
       button.className = "add-to-cart";
       button.textContent = "Feautered Items";
       button.addEventListener("click", () => {

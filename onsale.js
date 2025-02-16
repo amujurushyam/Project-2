@@ -1,5 +1,3 @@
-// 
-
 const url1 = "https://679af5fb747b09cdccd00c8e.mockapi.io/food";
 
 async function fetchFood() {
@@ -29,7 +27,6 @@ async function fetchFood() {
       button.className = "add-to-cart2";
       button.textContent = "On Sale Items";
 
-      // Add event listener for navigation
       button.addEventListener("click", () => {
         alert(`Thank you for visiting. Item: ${item.name}`);
       });
