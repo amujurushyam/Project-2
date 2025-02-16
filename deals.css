@@ -188,4 +188,8 @@ header .shopping span {
   .active .container {
     transform: translateX(0);
   }
+  .breadcrumbs {
+    font-size: 10px;
+    padding: 3px;
+  }
 }

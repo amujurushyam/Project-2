@@ -218,6 +218,24 @@ p{
     }
 }
 
+@media screen and (max-width: 728px) {
+  .mainscreen {
+    height: 100vh; 
+    width: 100vw;  
+    border-radius: 10px; /* Adjust as needed */
+  }
+
+  .rightside {
+    height: 80vh; /* Adjust as needed */
+    width: 90vw;  /* Adjust as needed */
+    border-radius: 10px; /* Adjust as needed */
+  }
+
+  .card {
+    width: 80rem; /* Adjust as needed */
+  }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
