@@ -66,12 +66,14 @@
       .iframe-container {
         position: relative;
         width: 100%;
-        padding-bottom: 56.25%;
+        padding-bottom: 50%;
         height: 0;
         overflow: hidden;
         animation: fadeIn 1s ease-in-out;
         border: 2px solid #dee2e6;
         border-radius: 8px;
+        z-index: 1;
+        margin-top: 20px;
       }
       .iframe-container iframe {
         position: absolute;
@@ -90,6 +92,32 @@
         .iframe-container {
           padding-bottom: 100%;
         }
+      }
+      .breadcrumb {
+        background-color: #ffffff;
+        border-radius: 0.25rem;
+        margin-bottom: 20px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dee2e6;
+        z-index: 1000;
+        position: relative;
+        font-size: 1.1rem;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+        color: #6c757d;
+      }
+      .breadcrumb-item a {
+        color:  #24243e;
+        text-decoration: none;
+      }
+      .breadcrumb-item a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+      .breadcrumb-item.active {
+        color: #6c757d;
       }
     </style>
   </head>
@@ -125,6 +153,13 @@
           </ul>
         </div>
       </div>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./signup.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Map</li>
+      </ol>
     </nav>
 
     <div id="map" class="d-flex justify-content-center align-items-center">
