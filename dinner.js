@@ -13,6 +13,11 @@ closeShopping.addEventListener("click", () => {
   body.classList.remove("active");
 });
 
+total.addEventListener("click", () => {
+  localStorage.setItem("totalAmount", total.innerText);
+  window.location.href = "check.html";
+});
+
 let products = [
   {
     strMeal: "BeaverTails",

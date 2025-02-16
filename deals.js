@@ -84,6 +84,10 @@ function reloadCard() {
   quantity.innerText = count;
 }
 
+total.addEventListener("click", () => {
+  window.location.href = "check.html";
+});
+
 function changeQuantity(key, quantity) {
   if (quantity == 0) {
     delete listCards[key];

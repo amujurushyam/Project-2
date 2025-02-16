@@ -1,0 +1,256 @@
+body {
+    font-family: system-ui;
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+.mainscreen
+{
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+    flex-direction: column;
+    background-color: #DFDBE5;
+    background-image: url("./1.jpg");
+    color:#963E7B;
+}
+
+.card {
+	width: 60rem;
+    margin: auto;
+    background: white;
+    position:center;
+    align-self: center;
+    top: 50rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display:flex;
+    flex-direction: row;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.leftside {
+	/* background: #030303; */
+    background: linear-gradient(to right, #abbaab, #ffffff);
+	width: 25rem;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.product {
+    object-fit: cover;
+	width: 20em;
+    height: 20em;
+    border-radius: 100%;
+    animation: zoomIn 0.5s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rightside {
+    background-color: #ffffff;
+    color: #030303;
+	width: 35rem;
+	border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+p{
+    display:block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: .8rem 0;
+}
+
+.inputbox
+{
+    color:#030303;
+	width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+  outline:none;
+}
+
+.expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text{
+    padding-right: 1rem;
+}
+.expcvv_text2{
+    padding:0 1rem;
+}
+
+.button{
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    background-size: 200% 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 10px;
+    width: 70%;
+    letter-spacing: .11rem;
+    outline:none;
+    transition: background-position 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 10px auto;
+}
+
+.button:hover
+{
+	transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+    background-position: right center;
+    animation: hoverEffect 0.3s ease-in-out;
+}
+
+.checkout-text {
+    text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card{
+        flex-direction: column;
+        width: auto;
+      
+    }
+
+    .leftside{
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+      border-top-right-radius:0;
+      border-radius:0;
+    }
+
+    .rightside{
+        width:auto;
+        border-bottom-left-radius: 1.5rem;
+        padding:0.5rem 3rem 3rem 2rem;
+      border-radius:0;
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    .card {
+        width: 90%;
+    }
+
+    .leftside, .rightside {
+        padding: 1rem;
+    }
+
+    .product {
+        width: 15em;
+        height: 15em;
+    }
+
+    .button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    .mainscreen {
+        min-height: 120vh;
+    }
+
+    .rightside {
+        width: 40rem;
+    }
+
+    .button {
+        width: 90%;
+        font-size: 1.1rem;
+        padding: 14px;
+    }
+
+    .product {
+        width: 18em;
+        height: 18em;
+    }
+
+    .card {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
+    .leftside, .rightside {
+        padding: 0.5rem;
+    }
+
+    .product {
+        width: 10em;
+        height: 10em;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes hoverEffect {
+    0% {
+        transform: scale(1) translateY(0);
+        box-shadow: 3px 3px 6px #38373785;
+    }
+    50% {
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 5px 5px 10px #38373785;
+    }
+    100% {
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 3px 3px 6px #38373785;
+    }
+}
