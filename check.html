@@ -19,7 +19,7 @@
           />
         </div>
         <div class="rightside">
-          <form action="">
+          <form id="checkoutForm">
             <h1>CheckOut</h1>
             <h2>Payment Information</h2>
             <p>Cardholder Name</p>
@@ -49,6 +49,22 @@
       </div>
     </div>
 <!-- partial -->
-  
+<script>
+  document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.querySelector('input[name="name"]').value;
+    const cardNumber = document.querySelector('input[name="card_number"]').value;
+    const cardType = document.querySelector('select[name="card_type"]').value;
+    const expDate = document.querySelector('input[name="exp_date"]').value;
+    const cvv = document.querySelector('input[name="cvv"]').value;
+
+    if (name && cardNumber && cardType && expDate && cvv) {
+      alert('Thank you for ordering');
+      location.reload();
+    } else {
+      alert('Please enter valid details');
+    }
+  });
+</script>
 </body>
 </html>
